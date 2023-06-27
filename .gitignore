@@ -1,0 +1,49 @@
+# Archivos generados por Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Archivos generados por Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pyw
+*_cache/
+*.egg-info/
+dist/
+build/
+*.log
+
+# Archivos específicos de la plataforma
+.DS_Store
+Thumbs.db
+
+# Entornos de desarrollo
+.env
+.env.local
+.env.*.local
+.env.test
+.env.test.local
+
+# Archivo de configuración
+config.js
+
+# Logs y registros
+*.log
+log/
+logs/
+
+# Archivos de respaldo
+*.bak
+*.swp
+*~
+._*
+
+# IDE y editores de texto
+.vscode/
+.idea/
+*.sublime-*
+*.swo
+*.swp
