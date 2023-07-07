@@ -511,6 +511,11 @@ get-intrinsic@^1.0.2:
     has-proto "^1.0.1"
     has-symbols "^1.0.3"
 
+getscreenmedia@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/getscreenmedia/-/getscreenmedia-5.1.2.tgz#39778de5f58d0a1a664175e504badafc3895e50a"
+  integrity sha512-IFdLX1oV1/nMDWajgok7pgkAH2ayY7wDx3jNBaSyRQfB2GAALkD1RoK0SlPkElLXKwMLV/F5jXZWz5Ic+xWjcA==
+
 glob-parent@~5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
