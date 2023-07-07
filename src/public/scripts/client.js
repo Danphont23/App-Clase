@@ -1,8 +1,6 @@
 // public/client.js
 "use strict";
 
-var getScreenMedia = require("getscreenmedia");
-
 const socket = io();
 const peer = new RTCPeerConnection();
 
@@ -11,13 +9,13 @@ const helpButton = document.getElementById("need-help");
 helpButton.addEventListener("click", async () => {
   try {
     let stream;
-    if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
-      stream = await getScreenMedia((err, stream) => {
-        return stream;
+    if (typeof navigator.mediaDevices.getDisplayMedia === "undefined") {
+      stream = await getScreenMedia({
+        video: true,
       });
     } else {
-      stream = await getScreenMedia((err, stream) => {
-        return stream;
+      stream = await navigator.mediaDevices.getDisplayMedia({
+        video: true,
       });
     }
 
