@@ -8,9 +8,16 @@ const helpButton = document.getElementById("need-help");
 
 helpButton.addEventListener("click", async () => {
   try {
-    const stream = await navigator.mediaDevices.getDisplayMedia({
-      video: true,
-    });
+    let stream;
+    if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
+      stream = await navigator.mediaDevices.getDisplayMedia({
+        video: true,
+      });
+    } else {
+      stream = await navigator.getDisplayMedia({
+        video: true,
+      });
+    }
 
     stream.getTracks().forEach((track) => peer.addTrack(track, stream));
 
