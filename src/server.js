@@ -47,7 +47,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const puerto = process.env.PORT || 8080;
+const puerto = process.env.PORT || 8085;
 server.listen(puerto, () => {
   console.log(`Conectado en el puerto http://localhost:${puerto}`);
 });
