@@ -1,20 +1,21 @@
 // public/client.js
 "use strict";
+
 const socket = io();
 const peer = new RTCPeerConnection();
 
 const helpButton = document.getElementById("need-help");
+
 helpButton.addEventListener("click", async () => {
   try {
     const stream = await navigator.mediaDevices.getDisplayMedia({
-      audio: false,
       video: true,
     });
 
-    peer.addTrack(stream.getVideoTracks()[0], stream);
+    stream.getTracks().forEach((track) => peer.addTrack(track, stream));
 
-    const sdp = await peer.createOffer();
-    await peer.setLocalDescription(sdp);
+    const offer = await peer.createOffer();
+    await peer.setLocalDescription(offer);
     socket.emit("offer", peer.localDescription);
   } catch (error) {
     console.error(error);
@@ -23,7 +24,7 @@ helpButton.addEventListener("click", async () => {
 });
 
 socket.on("answer", async (adminSDP) => {
-  peer.setRemoteDescription(adminSDP);
+  await peer.setRemoteDescription(adminSDP);
 });
 
 peer.addEventListener("icecandidate", (event) => {
@@ -31,6 +32,11 @@ peer.addEventListener("icecandidate", (event) => {
     socket.emit("icecandidate", event.candidate);
   }
 });
+
 socket.on("icecandidate", async (candidate) => {
-  await peer.addIceCandidate(new RTCIceCandidate(candidate));
+  try {
+    await peer.addIceCandidate(candidate);
+  } catch (error) {
+    console.error("Error adding ice candidate:", error);
+  }
 });
