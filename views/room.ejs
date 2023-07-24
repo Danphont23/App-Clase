@@ -25,7 +25,7 @@
         width: 500,
         height: 500,
         interfaceConfigOverwrite: { filmStripOnly: false },
-        configOverwrite: { startWithVideoMuted: true },
+        configOverwrite: { startWithVideoMuted: token && token === "client" },
         parentNode: document.querySelector("#meet"),
       };
 
