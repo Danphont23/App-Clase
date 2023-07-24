@@ -1,21 +1,43 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <title>Jitsi Meet Example</title>
     <script src="https://meet.jit.si/external_api.js"></script>
   </head>
-
   <body>
     <div id="meet"></div>
 
     <script>
+      // Función para obtener el valor de un parámetro en la URL
+      function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
       var domain = "meet.jit.si";
+      var roomName = "testroom";
+
+      // Obtener el token del parámetro 'token' en la URL
+      var token = getQueryParam("token");
+
       var options = {
-        roomName: "testroom",
+        roomName: roomName,
         width: 500,
         height: 500,
         interfaceConfigOverwrite: { filmStripOnly: false },
         parentNode: document.querySelector("#meet"),
+        userInfo: {
+          // Asignar el token recuperado desde la URL
+          token: token,
+        },
       };
+
       var api = new JitsiMeetExternalAPI(domain, options);
+
+      if (token && token === "client") {
+        api.executeCommand("toggleVideo");
+        api.executeCommand("toggleVideoDisabled", true);
+      }
     </script>
   </body>
 </html>
