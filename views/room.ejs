@@ -42,23 +42,6 @@
       };
 
       var api = new JitsiMeetExternalAPI(domain, options);
-
-      // Lógica para desactivar la cámara, el micrófono y el compartir pantalla del cliente
-      // Aquí asumimos que el cliente tiene el rol de 'client'
-      if (token && token === "client") {
-        // Desactivar la cámara al inicio de la llamada
-        api.executeCommand("toggleVideo");
-
-        // Desactivar el micrófono al inicio de la llamada
-        api.executeCommand("toggleAudio");
-
-        // También puedes deshabilitar el botón de cámara y micrófono para que el cliente no pueda encenderlos
-        api.executeCommand("toggleVideoDisabled", true);
-        api.executeCommand("toggleAudioDisabled", true);
-
-        // Desactivar el botón de compartir pantalla para que el cliente no pueda compartir su pantalla
-        api.executeCommand("toggleShareScreen", false);
-      }
     </script>
   </body>
 </html>
