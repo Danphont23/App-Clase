@@ -25,19 +25,8 @@
         width: 500,
         height: 500,
         interfaceConfigOverwrite: { filmStripOnly: false },
+        configOverwrite: { startWithVideoMuted: true },
         parentNode: document.querySelector("#meet"),
-        configOverwrite: {
-          // Lógica para desactivar la cámara, el micrófono y el compartir pantalla del cliente
-          // Aquí asumimos que el cliente tiene el rol de 'client'
-          // Si el token coincide con 'client', desactivamos cámara, micrófono y compartir pantalla
-          startWithAudioMuted: token && token === "client",
-          startWithVideoMuted: token && token === "client",
-          disableSimulcast: token && token === "client",
-        },
-        userInfo: {
-          // Asignar el token recuperado desde la URL
-          token: token,
-        },
       };
 
       var api = new JitsiMeetExternalAPI(domain, options);
