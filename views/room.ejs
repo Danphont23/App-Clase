@@ -1,25 +1,21 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Captura de pantalla y cámara</title>
-  <link rel="stylesheet" href="/styles/style.css">
-</head>
-<body>
-  <h1>Captura de pantalla y cámara</h1>
-  
-  <div>
-    <button onclick="startScreenSharing()">Compartir pantalla</button>
-    <button onclick="startCamera()">Activar cámara</button>
-    <button onclick="stopMedia()">Detener</button>
-  </div>
-  
-  <div id="videoContainer">
-    <video id="videoElement" autoplay muted playsinline></video>
-  </div>
-  
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/scripts/compartirPantalla.js"></script>
-  <script src="/scripts/socketio.js"></script>
-</body>
+  <head>
+    <script src="https://meet.jit.si/external_api.js"></script>
+  </head>
+
+  <body>
+    <div id="meet"></div>
+
+    <script>
+      var domain = "meet.jit.si";
+      var options = {
+        roomName: "testroom",
+        width: 500,
+        height: 500,
+        interfaceConfigOverwrite: { filmStripOnly: false },
+        parentNode: document.querySelector("#meet"),
+      };
+      var api = new JitsiMeetExternalAPI(domain, options);
+    </script>
+  </body>
 </html>
