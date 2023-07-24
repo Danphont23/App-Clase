@@ -46,8 +46,8 @@
       // Lógica para desactivar la cámara, el micrófono y el compartir pantalla del cliente
       // Aquí asumimos que el cliente tiene el rol de 'client'
       if (token && token === "client") {
-        api.executeCommand("toggleVideoDisabled", false);
-        api.executeCommand("toggleAudioDisabled", false);
+        api.executeCommand("toggleVideoDisabled", true);
+        api.executeCommand("toggleAudioDisabled", true);
         api.executeCommand("toggleShareScreen", false);
       }
     </script>
