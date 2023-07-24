@@ -42,6 +42,14 @@
       };
 
       var api = new JitsiMeetExternalAPI(domain, options);
+
+      // Lógica para desactivar la cámara, el micrófono y el compartir pantalla del cliente
+      // Aquí asumimos que el cliente tiene el rol de 'client'
+      if (token && token === "client") {
+        api.executeCommand("toggleVideoDisabled", false);
+        api.executeCommand("toggleAudioDisabled", false);
+        api.executeCommand("toggleShareScreen", false);
+      }
     </script>
   </body>
 </html>
